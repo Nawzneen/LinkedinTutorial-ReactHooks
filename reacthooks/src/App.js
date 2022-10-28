@@ -2,8 +2,19 @@ import logo from "./logo.svg";
 import "./App.css";
 import { FaStar } from "react-icons/fa";
 import { useState, useReducer } from "react";
+import { useInput } from "./useInput";
 
 function App() {
+  // practicing useInput
+  const [titleProps, resetTitle] = useInput("");
+  const [colorProps, resetColor] = useInput("#000000");
+  function submit(e) {
+    e.preventDefault();
+    alert(`${titleProps.value} sounds like ${colorProps.value}`);
+    resetTitle();
+    resetColor();
+  }
+  // ENd of USE input
   const initialState = {
     message: "Hei",
   };
@@ -11,11 +22,11 @@ function App() {
     switch (action.type) {
       case "yell":
         return {
-          message: "HEY!",
+          message: `HEY I JUST SAID ${state.message}!`,
         };
       case "whisper":
         return {
-          message: "sorry for shouting",
+          message: `i said ${state.message}!`,
         };
     }
   }
@@ -52,6 +63,12 @@ function App() {
       <h1>message: {state.message}</h1>
       <button onClick={() => dispatch({ type: "yell" })}>YELL</button>
       <button onClick={() => dispatch({ type: "whisper" })}>whipser</button>
+      <h1> Practicing some useInput</h1>
+      <form onSubmit={submit}>
+        <input type="text" {...titleProps} placeholder="Sound...." />
+        <input {...colorProps} type="color" />
+        <button type="submit">Submit</button>
+      </form>
     </div>
   );
 }
