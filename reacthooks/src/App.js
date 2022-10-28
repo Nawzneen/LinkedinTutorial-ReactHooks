@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { FaStar } from "react-icons/fa";
-import { useState, useReducer } from "react";
+import React, { useState, useReducer, createContext } from "react";
 import { useInput } from "./useInput";
 
 function App() {
