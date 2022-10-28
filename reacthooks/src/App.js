@@ -1,10 +1,13 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { FaStar } from "react-icons/fa";
-import React, { useState, useReducer, createContext } from "react";
+import React, { useState, useReducer, useContext } from "react";
 import { useInput } from "./useInput";
+import { TreesContext } from "./";
 
 function App() {
+  // Practicing Creating Context
+  const { trees } = useContext(TreesContext);
   // practicing useInput
   const [titleProps, resetTitle] = useInput("");
   const [colorProps, resetColor] = useInput("#000000");
@@ -69,6 +72,14 @@ function App() {
         <input {...colorProps} type="color" />
         <button type="submit">Submit</button>
       </form>
+      <div>
+        <h1>Trees i have heard of</h1>
+        <ul>
+          {trees.map((tree) => (
+            <li key={tree.id}>{tree.type}</li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
