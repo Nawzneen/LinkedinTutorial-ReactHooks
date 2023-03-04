@@ -6,11 +6,19 @@ function AddNewTask(props) {
   // The modal is coming from the Sidebar
   // const [showModal, setShowModal] = useState("false");
   // const [modal, toggleModal] = props;
-  console.log(props);
+  // console.log(props);
+  const [newTask, setNewTask] = useState({
+    title: "",
+    description: "",
+    date: "",
+  });
+  // const [taskText, setTaskText] = useState("");
+  // const [taskDate, setTaskDate] = useState("");
 
-  const [taskText, setTaskText] = useState("");
-  const [taskDate, setTaskDate] = useState("");
-
+  const handleInputChanges = (event) => {
+    const { name, value } = event.target;
+    setNewTask({ ...newTask, [name]: value });
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -18,14 +26,17 @@ function AddNewTask(props) {
     // before calling the callback function to add the new task
 
     console.log("the submit button is working");
+    console.log(newTask);
+    // updateNewtask;
     // props.addTask({
     //   text: taskText,
     //   date: taskDate,
     // });
-    console.log(taskDate, taskText);
+    // console.log(taskDate, taskText);
     // Clear the form and hide the modal
-    setTaskText("");
-    setTaskDate("");
+    // setTaskText("");
+    // setTaskDate("");
+    setNewTask({ title: "", description: "", date: "" });
     // props.toggleModal;
     props.toggleModal();
   };
@@ -48,21 +59,34 @@ function AddNewTask(props) {
         <Modal.Body>
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formTaskText">
-              <Form.Label>Task Text</Form.Label>
+              <Form.Label>Title</Form.Label>
               <Form.Control
+                name="title"
                 type="text"
-                value={taskText}
-                onChange={(event) => setTaskText(event.target.value)}
+                value={newTask.title}
+                onChange={handleInputChanges}
+                required
+              />
+            </Form.Group>
+
+            <Form.Group controlId="formTaskText">
+              <Form.Label>Description</Form.Label>
+              <Form.Control
+                name="description"
+                type="text"
+                value={newTask.description}
+                onChange={handleInputChanges}
                 required
               />
             </Form.Group>
 
             <Form.Group controlId="formTaskDate">
-              <Form.Label>Task Date</Form.Label>
+              <Form.Label>Due Date</Form.Label>
               <Form.Control
+                name="date"
                 type="date"
-                value={taskDate}
-                onChange={(event) => setTaskDate(event.target.value)}
+                value={newTask.date}
+                onChange={handleInputChanges}
                 required
               />
             </Form.Group>
