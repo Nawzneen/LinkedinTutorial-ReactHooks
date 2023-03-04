@@ -66,7 +66,7 @@ function Sidebar() {
           </a>
         </li>
         <button onClick={handleShowModal}>Open Modal</button>
-        <AddNewTask showModal={showModal} setShowModal={setShowModal} />
+        <AddNewTask showModal={showModal} toggleModal={handleShowModal} />
       </ul>
     </div>
   );

@@ -3,7 +3,11 @@ import { Button, Modal, Form } from "react-bootstrap";
 import SideBar from "./SideBar";
 
 function AddNewTask(props) {
-  const [showModal, setShowModal] = props;
+  // The modal is coming from the Sidebar
+  // const [showModal, setShowModal] = useState("false");
+  // const [modal, toggleModal] = props;
+  console.log(props);
+
   const [taskText, setTaskText] = useState("");
   const [taskDate, setTaskDate] = useState("");
 
@@ -12,24 +16,31 @@ function AddNewTask(props) {
 
     // Perform any necessary data processing and validation
     // before calling the callback function to add the new task
-    props.addTask({
-      text: taskText,
-      date: taskDate,
-    });
+
+    console.log("the submit button is working");
+    // props.addTask({
+    //   text: taskText,
+    //   date: taskDate,
+    // });
 
     // Clear the form and hide the modal
     setTaskText("");
     setTaskDate("");
-    setShowModal(false);
+    // props.toggleModal;
+    props.toggleModal();
+  };
+  const cancelModal = () => {
+    props.toggleModal();
   };
 
   return (
     <>
-      <Button variant="primary" onClick={() => setShowModal(true)}>
+      {/* <Button variant="primary" onClick={() => setShowModal(true)}>
         Add New Task
-      </Button>
+      </Button> */}
 
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
+      {/* <Modal show={showModal} onHide={() => setShowModal(false)}> */}
+      <Modal show={props.showModal}>
         <Modal.Header closeButton>
           <Modal.Title>Add New Task</Modal.Title>
         </Modal.Header>
@@ -57,7 +68,7 @@ function AddNewTask(props) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowModal(false)}>
+          <Button variant="secondary" onClick={cancelModal}>
             Cancel
           </Button>
           <Button variant="primary" onClick={handleSubmit}>
