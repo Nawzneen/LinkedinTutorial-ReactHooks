@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "../CSS/sidebar.css";
+import AddNewTask from "./AddNewTask";
 import {
   FiPlus,
   FiCalendar,
@@ -13,6 +14,12 @@ import { MdOutlineToday, MdOutlineCalendarToday } from "react-icons/md";
 // import "./sidebar.css";
 
 function Sidebar() {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
   return (
     <div className="sidebar">
       <ul className="sidebar-menu">
@@ -58,6 +65,8 @@ function Sidebar() {
             <span>Log out</span>
           </a>
         </li>
+        <button onClick={handleShowModal}>Open Modal</button>
+        <AddNewTask showModal={showModal} setShowModal={setShowModal} />
       </ul>
     </div>
   );
