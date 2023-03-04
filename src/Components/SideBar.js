@@ -17,7 +17,8 @@ function Sidebar() {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => {
-    setShowModal(true);
+    setShowModal(!showModal);
+    console.log("handle show modal is working");
   };
 
   return (
@@ -29,7 +30,7 @@ function Sidebar() {
             <span>Profile</span>
           </a>
         </li>
-        <li>
+        <li onClick={handleShowModal}>
           <a href="#">
             <FiPlus />
             <span>Add new task</span>
@@ -65,7 +66,6 @@ function Sidebar() {
             <span>Log out</span>
           </a>
         </li>
-        <button onClick={handleShowModal}>Open Modal</button>
         <AddNewTask showModal={showModal} toggleModal={handleShowModal} />
       </ul>
     </div>

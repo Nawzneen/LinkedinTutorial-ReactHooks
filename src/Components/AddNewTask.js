@@ -22,7 +22,7 @@ function AddNewTask(props) {
     //   text: taskText,
     //   date: taskDate,
     // });
-
+    console.log(taskDate, taskText);
     // Clear the form and hide the modal
     setTaskText("");
     setTaskDate("");
@@ -30,6 +30,7 @@ function AddNewTask(props) {
     props.toggleModal();
   };
   const cancelModal = () => {
+    console.log("cancel buttom is working");
     props.toggleModal();
   };
 
