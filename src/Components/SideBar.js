@@ -1,12 +1,16 @@
 import React from "react";
+import "../CSS/sidebar.css";
 import {
-  PlusCircleFill,
-  CalendarToday,
-  CalendarWeek,
-  ListTask,
-  GearFill,
-  BoxArrowRight,
-} from "react-bootstrap-icons";
+  FiPlus,
+  FiCalendar,
+  FiCalendarWeek,
+  FiList,
+  FiSettings,
+  FiLogOut,
+} from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
+import { MdOutlineToday, MdOutlineCalendarToday } from "react-icons/md";
+// import "./sidebar.css";
 
 function Sidebar() {
   return (
@@ -14,32 +18,44 @@ function Sidebar() {
       <ul className="sidebar-menu">
         <li>
           <a href="#">
-            <PlusCircleFill /> Add New Task
+            <CgProfile />
+            <span>Profile</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <CalendarToday /> Today
+            <FiPlus />
+            <span>Add new task</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <CalendarWeek /> This Week
+            <MdOutlineToday />
+            <span>Today</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <ListTask /> All
+            <MdOutlineCalendarToday />
+            <span>This week</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <GearFill /> Settings
+            <FiList />
+            <span>All</span>
           </a>
         </li>
         <li>
           <a href="#">
-            <BoxArrowRight /> Logout
+            <FiSettings />
+            <span>Settings</span>
+          </a>
+        </li>
+        <li className="logout">
+          <a href="#">
+            <FiLogOut />
+            <span>Log out</span>
           </a>
         </li>
       </ul>
